@@ -1,0 +1,119 @@
+﻿@{
+    ViewBag.Title = "Delete User";
+}
+@model ProductManagmentSystem.Models.UserModel
+<div class="col-lg-10 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h3>Delete User</h3>
+            <br />
+            <form method="post" asp-controller="User" asp-action="DeleteUser" enctype="multipart/form-data">
+                @Html.HiddenFor(x=>x.UserId)
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">First Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" asp-for="FirstName" placeholder="Enter First Name" />
+                                <span asp-validation-for="FirstName" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Last Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" asp-for="LastName" placeholder="Enter Last Name" />
+                                <span asp-validation-for="LastName" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Phone Number</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" asp-for="PhoneNumber" placeholder="Enter Number" />
+                                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Date of Birth</label>
+                            <div class="col-sm-9">
+                                <input type="date" class="form-control" asp-for="DateOfBirth" placeholder="dd/mm/yyyy" />
+                                <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Gender</label>
+                            <div class="col-sm-9">
+                                <select class="form-control" asp-for="UserRole">
+                                    <option>User</option>
+                                    <option>Admin</option>
+                                </select>
+                            </div>
+                            <span asp-validation-for="UserRole" class="text-danger"></span>
+
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Role</label>
+                            <div class="col-sm-4">
+                                <div class="form-check">
+                                    <input asp-for="Gender" type="radio" value="Male" />
+                                    <label for="male">Male</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-5">
+                                <div class="form-check">
+                                    <input asp-for="Gender" type="radio" value="Female" />
+                                    <label for="female">Female</label>
+                                </div>
+                            </div>
+                        </div>
+                        <span asp-validation-for="Gender" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Email</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" asp-for="Email" placeholder="Enter Email" />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Password</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" asp-for="Password" placeholder="Enter Password" />
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-sm-3 col-form-label">Address</label>
+
+                    <textarea class="form-control" asp-for="Address" placeholder="Address"></textarea>
+                    <span asp-validation-for="Address" class="text-danger"></span>
+                </div>
+                <hr />
+                <div class="row">
+                    <a class="btn btn-danger" onclick="" asp-controller="User" asp-action="AllUser" style="margin-left: 30px">Delete</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,140 @@
+﻿@{
+    ViewData["Title"] = "View User";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model ProductManagmentSystem.Models.UserModel;
+<div class="col-lg-10 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h3>View User</h3>
+            <br />
+            <form method="post" enctype="multipart/form-data">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">User Photo</label>
+                            <div class="col-sm-9">
+                                <input type="image" class="form-control" asp-for="File" src="@Url.Content(Model.UserPhoto)" style="height:120px; width:120px; border-radius:0px " alt="Sorry Server is down..." disabled />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">First Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" asp-for="FirstName" placeholder="Enter First Name" disabled />
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Last Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" asp-for="LastName" placeholder="Enter Last Name" disabled />
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Phone Number</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" asp-for="PhoneNumber" placeholder="Enter Number" disabled />
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Date of Birth</label>
+                            <div class="col-sm-9">
+                                <input type="date" class="form-control" asp-for="DateOfBirth" placeholder="dd/mm/yyyy" disabled />
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Role</label>
+                            <div class="col-sm-9">
+                                <select class="form-control" asp-for="UserRole" disabled>
+                                    <option>User</option>
+                                    <option>Admin</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Gender</label>
+                            <div class="col-sm-4">
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input type="radio" asp-for="Gender" value="Male" disabled />
+                                        Male
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-sm-5">
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input type="radio" asp-for="Gender" value="Female" disabled />
+                                        Female
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Email</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" asp-for="Email" placeholder="Enter Email" disabled />
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Password</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" asp-for="Password" placeholder="Enter Password" disabled />
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="col-sm-3 col-form-label">Address</label>
+
+                    <textarea class="form-control" asp-for="Address" placeholder="Address" disabled></textarea>
+
+                </div>
+                <hr />
+                <div class="row">
+                    <a class="btn btn-danger" onclick="" asp-controller="Home" asp-action="Index" style="margin-left: 30px">Back</a>
+                    <a class="btn btn-primary" onclick="" asp-controller="User" asp-action="EditUser" style="margin-left: 30px">Edit</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+

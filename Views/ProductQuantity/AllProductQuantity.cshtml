@@ -1,0 +1,80 @@
+﻿@{
+    ViewBag.Title = "Product Quantity List";
+}
+@*@model IEnumerable<ProductManagmentSystem.Models.ProductModel>*@
+@model IEnumerable<ProductManagmentSystem.Models.ProductQuantityModel>
+
+<div class="row">
+    <h3>Product Quantity...</h3>
+</div>
+<hr />
+
+
+
+<div class="table-responsive">
+    <table class="table table-striped" id="sample_1">
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.ProductName</td>
+                    <td>
+                        
+                        @{
+                            int qmins = 1;
+                            qmins = item.Quantity - qmins;
+                        }
+                       @*  <a class="btn btn-success" onclick="" asp-controller="ProductQuantity" asp-action="QtyMinus" asp-route-id="@item.ProductId" asp-route-qty="@qmins">-</a> *@
+
+                        <a asp-controller="ProductQuantity" asp-action="QtyMinus" asp-route-id="@item.ProductId" asp-route-qty="@qmins">
+                            <button type="button" class="btn btn-primary btn-sm">-</button>
+                        </a>
+
+                        @item.Quantity
+
+                        @{
+                            int qplus = 1;
+                            qplus = item.Quantity + qplus;
+                        }
+                        @* <a class="btn btn-success" onclick="" asp-controller="ProductQuantity" asp-action="QtyPlush" asp-route-id="@item.ProductId" asp-route-qty="@qplus">+</a> *@
+                        <a asp-controller="ProductQuantity" asp-action="QtyPlush" asp-route-id="@item.ProductId" asp-route-qty="@qplus">
+                            <button type="button" class="btn btn-primary btn-sm">+</button>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@*<script type="text/javascript">
+    function incrementValue() {
+        var value = parseInt(document.getElementById('number').value);
+        value = isNaN(value) ? 0 : value;
+        if (value < 100000) {
+            value++;
+            document.getElementById('number').value = value;
+        }
+    }
+    function decrementValue() {
+        var value = parseInt(document.getElementById('number').value);
+        value = isNaN(value) ? 0 : value;
+        if (value > 1) {
+            value--;
+            document.getElementById('number').value = value;
+        }
+
+    }
+</script>
+*@
+@*<form asp-controller="ProductQuantity" asp-action="" asp-route-id="@item.Quantity">
+                <input type="button" asp-action="QtyMinus" onclick="decrementValue()" value="-" />
+                <input type="text" name="quantity" value="1" maxlength="5" size="1" id="number" />
+                <input type="button" onclick="incrementValue()" value="+" />
+                </form>*@

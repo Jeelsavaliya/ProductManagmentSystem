@@ -1,0 +1,62 @@
+﻿@{
+    ViewData["Title"] = "Edit Order Product";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model ProductManagmentSystem.Models.OrderProductModel;
+<div class="col-lg-10 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h3>Edit Order Product</h3>
+            <form method="post" asp-controller="OrderProduct" asp-action="AddOrderProductToDB">
+
+                @*<div class="form-group">
+                <label>Product Name</label>
+                <input type="text" class="form-control" asp-for="ProductName" placeholder="Enter Name" />
+                </div>
+                <div class="form-group">
+                <label>Product Number</label>
+                <input type="text" class="form-control" asp-for="ProductNumber" placeholder="Enter Number" />
+                </div>
+                <div class="form-group">
+                <label>Description</label>
+                <input type="text" class="form-control" asp-for="Description" placeholder="Enter Description" />
+                </div>
+                <div class="form-group">
+                <label>Product Price</label>
+                <input type="text" class="form-control" asp-for="ProductPrice" placeholder="Enter Amount" />
+                </div>*@
+
+                <div class="form-group">
+                    <label><span class="text-danger"></span>Photo Path</label>
+                    <input type="file" class="form-control" @*asp-for="ProductImg"*@ placeholder="Upload File" />
+                    @*<span asp-validation-for="ProductImg" class="text-danger"></span>*@
+                </div>
+                <div class="form-group">
+                    <label>Product Name</label>
+                    <input type="text" class="form-control" @*asp-for="ProductName"*@ placeholder="Enter Name" />
+                    @*<span asp-validation-for="ProductName" class="text-danger"></span>*@
+                </div>
+                <div class="form-group">
+                    <label>Product Number</label>
+                    <input type="text" class="form-control" @*asp-for="ProductNumber"*@ placeholder="Enter Number" />
+                    @*<span asp-validation-for="ProductNumber" class="text-danger"></span>*@
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea class="form-control" @*asp-for="Description"*@ placeholder="Description"></textarea>
+                    @*<span asp-validation-for="Description" class="text-danger"></span>*@
+                </div>
+                <div class="form-group">
+                    <label>Amount</label>
+                    <input type="text" class="form-control" asp-for="Amount" placeholder="Enter Amount" />
+                    <span asp-validation-for="Amount" class="text-danger"></span>
+                </div>
+                <hr />
+                <div class="row">
+                    <input type="submit" class="btn btn-success" />
+                    <a class="btn btn-danger" onclick="" asp-controller="OrderProduct" asp-action="AllOrderProduct" style="margin-left: 30px">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

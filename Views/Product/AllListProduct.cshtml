@@ -1,0 +1,138 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.Title = "All List Product";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model IEnumerable<ProductManagmentSystem.Models.ProductModel>
+<div class="row">
+    <div class="col-lg-9">
+        <h3>Product List...</h3>
+    </div>
+    @*  <div class="col-lg-3">
+    <a class="btn btn-primary" asp-controller="Product" asp-action="AddProduct">Add Product</a>
+    </div> *@
+</div>
+<hr />
+
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .flip-card {
+            background-color: transparent;
+            width: 300px;
+            height: 300px;
+            perspective: 1000px;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        }
+
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+
+        .flip-card-front {
+            background-color: #bbb;
+            color: black;
+        }
+
+        .flip-card-back {
+            /* background-color: #2980b9;
+                            color: white; */
+            background-color: white;
+            color: black;
+            transform: rotateY(180deg);
+        }
+
+        .col {
+            padding: 10px;
+        }
+
+        #wrap {
+            display: grid;
+            grid-template-columns: 4;
+        }
+
+        #mainRow {
+            width: fit-content;
+            position: relative;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        #items {
+            overflow: hidden;
+        }
+
+        #flip-back {
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-panel">
+        <div id="wrap" class="content-wrapper">
+            <div id="mainRow" class="row">
+                @foreach (var item in Model)
+                {
+                    <div id="items" class="col col-md-3">
+                        <div class="flip-card">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <img src="@Url.Content(item.ProductImg)" alt="Avatar" >
+                                </div>
+                                <div id="flip-back" class="flip-card-back">
+                                    <br />
+                                    <h3>Product: @item.ProductName</h3>
+                                    <h4>Description: @item.Description</h4>
+                                    <h4>Price: @item.ProductPrice</h4>
+                                    <h3>
+                                        <a asp-controller="CartItem" asp-action="AddCartItem" asp-route-Id="@item.ProductId" asp-route-Price="@item.ProductPrice" class="btn btn-primary btn-sm" style="margin-top:50px">
+                                            Add To Cart
+                                        </a>
+                                    </h3>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</body>
+</html>                             

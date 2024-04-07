@@ -1,0 +1,138 @@
+﻿@{
+    ViewBag.Title = "CartItem List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    decimal maintotal = 0;
+}
+
+
+@model IEnumerable<ProductManagmentSystem.Models.CartItemModel>
+<div class="row">
+    <div class="col-lg-9">
+        <h3>CartItem List...</h3>
+    </div>
+</div>
+<hr />
+
+
+<div class="table-responsive">
+    <table class="table table-striped" id="sample_1">
+        <thead>
+            <tr>
+                <th>Product Image</th>
+                <th>Product Name</th>
+                <th>Discription</th>
+                <th>Product Price</th>
+                <th>Qty</th>
+                <th>Amount</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td><img src="@Url.Content(item.ProductImg)" style="height:80px; width:80px; border-radius:0px" /></td>
+                    <td>@item.ProductName</td>
+                    <td>@item.Description</td>
+                    <td>@item.ProductPrice</td>
+                    <td>
+
+                        @{
+                            int qmins = 1;
+                            qmins = item.Qty - qmins;
+                        }
+                        @*  <a class="btn btn-success" onclick="" asp-controller="ProductQuantity" asp-action="QtyMinus" asp-route-id="@item.ProductId" asp-route-qty="@qmins">-</a> *@
+
+                        <a asp-controller="CartItem" asp-action="MinusQty" asp-route-id="@item.ProductId" asp-route-qty="@qmins">
+                            <button type="button" class="btn btn-primary btn-sm">-</button>
+                        </a>
+
+                        @item.Qty
+
+                        @{
+                            int qplus = 1;
+                            qplus = item.Qty + qplus;
+                        }
+                        @* <a class="btn btn-success" onclick="" asp-controller="ProductQuantity" asp-action="QtyPlush" asp-route-id="@item.ProductId" asp-route-qty="@qplus">+</a> *@
+                        <a asp-controller="CartItem" asp-action="PlushQty" asp-route-id="@item.ProductId" asp-route-qty="@qplus">
+                            <button type="button" class="btn btn-primary btn-sm">+</button>
+                        </a>
+                    </td>
+
+                    <td>
+                        @{
+                            decimal total = item.ProductPrice * item.Qty;
+                            maintotal += total;
+                        }
+                        @total
+
+                        @*  @item.Amount *@
+                    </td>
+                    <td>
+
+                        @* <form method="post" asp-controller="Product" asp-action="DeleteProduct" asp-route-id="@item.ProductId">
+                    <button type="submit" class="btn btn-danger btn-sm" onclick="return fun1()">Delete<i class="bi bi-trash"></i></button>
+                    </form> *@
+                        <a asp-controller="CartItem" asp-action="DeleteCartItem" asp-route-id="@item.CartItemId">
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return fun1()">Delete</button>
+                        </a>
+                        @* <a asp-controller="OrderProduct" asp-action="AddOrderProduct" asp-route-id="@item.CartItemId" asp-route-price="@item.Amount">
+                    <button type="submit" class="btn btn-success btn-sm" onclick="return fun2()">Book Order</button>
+                    </a> *@
+
+                    </td>
+
+                </tr>
+            }
+            <tr>
+                <td colspan="7" style="text-align:right">
+                    
+                        <h3>Total Amount: @maintotal</h3>
+                    
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
+</div>
+@* <div>
+    <b>@maintotal</b>
+</div> *@
+<br />
+<div class="row">
+    <a class="btn btn-danger" onclick="" asp-controller="Home" asp-action="Index" style="margin-left: 30px">Go Home</a>
+    <a class="btn btn-success" onclick="return fun2()" asp-controller="OrderProduct" asp-action="AddOrderProduct" style="margin-left: 30px">Book Order</a>
+</div>
+
+<script>
+    //Delete Product
+    $(document).ready(function () {
+        $("#sample_1").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("#sample_2 tr").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+
+    function fun1() {
+        if (confirm("Are You Sure Want To Delete")) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    function fun2() {
+        if (confirm("Are You Sure Want To Order")) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+</script>
